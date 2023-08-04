@@ -13,23 +13,39 @@ public class NameRepository {
     public static void main(String[] args) {
 
         System.out.println("initial array size " + getSize());
-        String[] names = {"Shu D", "Erik p", "Josef f", "Mike M"};
+        String[] names = {"Magnus Sven", "Mila Magnus", "Peter Axelsson", "Erik Strom"};
         setNames(names);
         String[] myArr = findAll(names);
         System.out.println(Arrays.toString(myArr));
         System.out.println("Size of array " + getSize());
-        System.out.println(" Full name is : " + find("Sam"));
+        System.out.println(" Full name is : " + find("Erik Strom"));
         System.out.println(" Add new name to existing array ");
+        add("Shu D");
+        //find("Erik Strom");
+
+        System.out.println(" Name found = " + find("Magnus Sven"));
+
+        update("Magnus Sven", "Angalina Kav");
+
+        // clear();
+        //System.out.println("The size of array after emptying it "+getSize());
 
 
-        //System.out.println("Emptying array ");
-       /* clear();
-       // System.out.println("The size of array after emptying it "+getSize());
-        System.out.println(" Enter the name to search in array");
-        Scanner s1=new Scanner(System.in);
-        String n1=s1.nextLine();*/
+    }
+
+    public static String[] update(final String original, final String updatedName) {
+        for (int n = 0; n < names.length; n++) {
+            if (original.equalsIgnoreCase(Arrays.toString(names))) ;
+            {
+                names[n] = updatedName;
+                System.out.println(Arrays.toString(names));
+                break;
+            }
+
+        }
 
 
+        return names;
     }
 
     public static int getSize() {
@@ -54,7 +70,7 @@ public class NameRepository {
     public static String find(final String fullName) {
         for (String key : names) {
             if (key.equalsIgnoreCase(fullName)) {
-                System.out.println("Full name found on " + key);
+                System.out.println("Full name found = " + key);
                 return fullName;
             }
         }
@@ -68,6 +84,7 @@ public class NameRepository {
         }
         String[] AddNameArr = Arrays.copyOf(names, names.length + 1);
         AddNameArr[AddNameArr.length - 1] = fullName;
+        System.out.println(Arrays.toString(AddNameArr));
         return true;
     }
 
@@ -75,9 +92,9 @@ public class NameRepository {
         String[] NewArray = new String[0];
         for (String key : names) {
             String[] FirstName = key.split(" ");
-            String fn = FirstName[0];
+            String fn = FirstName[NewArray.length];
             if (fn.equalsIgnoreCase(firstName)) {
-                NewArray[NewArray.length - 1] = firstName;
+                NewArray[NewArray.length + 1] = firstName;
 
             }
 
@@ -85,4 +102,20 @@ public class NameRepository {
         return firstName;
 
     }
+
+    public static String LastName(final String lastName) {
+        String[] NewArr = new String[0];
+        for (String key : names
+        ) {
+            String[] LastNam1 = key.split(" ");
+            String ln = LastNam1[0];
+            if (ln.equalsIgnoreCase((lastName))) {
+                NewArr[NewArr.length - 1] = lastName;
+            }
+
+        }
+        return lastName;
+    }
+
+
 }

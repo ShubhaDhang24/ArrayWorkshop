@@ -31,14 +31,19 @@ public class NameRepository {
 
         System.out.println(" ");
         System.out.println("---Method Find()--- ");
-        System.out.println(" Full name is : " + find("Erik Stm"));
+        System.out.println(" Full name is : " + find("Erik Strom"));
 
         System.out.println(" ");
         System.out.println("---Method add()---");
         System.out.println(" Add new name to existing array ");
+        boolean res = add("Shu D");
+        if (res) {
+            System.out.println("Name added ");
+            //System.out.println(" Updated array : "+Arrays.toString(names));
+        } else {
+            System.out.println("Failed to add name ");
+        }
 
-        System.out.println(" ");
-        add("Shu D");
         //GET SIZE METHOD IS NOT WORKING CORRECTLY, ARRAY IS NOT DISPLAYING CORRECTLY
         System.out.println(" ");
         System.out.println("Size of array after adding new element : " + getSize());
@@ -56,14 +61,36 @@ public class NameRepository {
         System.out.println(Arrays.toString(findAll(names)));
 
         System.out.println(" ");
-        //System.out.println(Arrays.toString(findByFirstName("Peter ": ; String space ; ));
-        // clear();
-        //System.out.println("The size of array after emptying it "+getSize());
+        String ln = "Magnus";
+        String foundName = findByFirstName(ln);
+        if (ln != null) {
+            System.out.println("Last Name found   : " + ln);
+        } else {
+            System.out.println("Last Name not found    : " + ln);
+        }
+
+        System.out.println(" ");
+        String fn = "mila";
+        String foundLastName = findByFirstName(fn);
+        if (fn != null) {
+            System.out.println("First Name found   : " + fn);
+        } else {
+            System.out.println("First Name not found    : " + fn);
+        }
+        System.out.println(" ");
+        remove("Peter Axelsson");
+
+        System.out.println(" ");
+        System.out.println("---METHOD clear()---");
+        clear();
+        System.out.println("The size of array after emptying it " + getSize());
 
 
     }
 
     public static void update(final String original, final String updatedName) {
+        String[] newName = names;
+        System.out.println(Arrays.toString(newName));
         for (int n = 0; n < names.length; n++) {
             if (original.equalsIgnoreCase(Arrays.toString(names))) ;
             {
@@ -71,6 +98,7 @@ public class NameRepository {
                 System.out.println(Arrays.toString(names));
                 break;
             }
+
 
         }
 
@@ -91,6 +119,7 @@ public class NameRepository {
     }
 
     public static String[] findAll(String[] newNames) {
+        newNames = names;
         return newNames;
     }
 
@@ -112,52 +141,68 @@ public class NameRepository {
         }
         String[] AddNameArr = Arrays.copyOf(names, names.length + 1);
         AddNameArr[AddNameArr.length - 1] = fullName;
+        names = AddNameArr;
         System.out.println(Arrays.toString(AddNameArr));
         return true;
     }
 
-    public static String findByFirstName(final String firstName) {
-        String[] NewArray = new String[0];
-        for (String key : names) {
-            String[] FirstName = key.split(" ");
-            String fn = FirstName[NewArray.length];
-            if (fn.equalsIgnoreCase(firstName)) {
-                NewArray[NewArray.length + 1] = firstName;
 
+    public static String findByFirstName(final String firstName) {
+        for (String name : names
+        ) {
+            if (name.equalsIgnoreCase(firstName)) {
+                return name;
             }
 
         }
-        return firstName;
-
+        return null;
     }
 
     public static String LastName(final String lastName) {
-        String[] NewArr = new String[0];
+
         for (String key : names
         ) {
-            String[] LastNam1 = key.split(" ");
-            String ln = LastNam1[0];
-            if (ln.equalsIgnoreCase((lastName))) {
-                NewArr[NewArr.length - 1] = lastName;
+
+            if (key.equalsIgnoreCase((lastName))) {
+                return key;
             }
 
         }
-        return lastName;
+        return null;
     }
 
-    public static boolean remove(final String fullName) {
-        for (String key : names
-        ) {
-            if (key.equalsIgnoreCase(fullName)) {
-
-
+    public static void remove(final String fullName) {
+        int index = -1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equalsIgnoreCase(fullName)) {
+                index = i;
+                break;
             }
-
         }
-        return true;
+        if (index != -1) {
+
+            String[] newArray = new String[names.length - 1];
+            int newIndex = 0;
+            for (int i = 0; i < names.length; i++) {
+                if (i != index) {
+                    newArray[newIndex] = names[i];
+                    newIndex++;
+                }
+            }
+            names = newArray;
+            System.out.println("Removed " + fullName + " from the array.");
+        } else {
+            System.out.println(fullName + " not found in the array.");
+        }
+
+        System.out.println("Updated array: " + Arrays.toString(names));
+
     }
-
-
 
 
 }
+
+
+
+
+

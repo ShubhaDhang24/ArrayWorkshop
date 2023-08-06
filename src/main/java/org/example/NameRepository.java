@@ -1,39 +1,69 @@
 package org.example;
 
-import javax.net.ssl.SSLContextSpi;
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 //PART 1
 public class NameRepository {
-    private static String name;
+
     private static String[] names = new String[0];//declaration of empty array
 
 
     public static void main(String[] args) {
 
-        System.out.println("initial array size " + getSize());
+        System.out.println("----Method getSize()----");
+        System.out.println("initial array size is = " + getSize());
+
+        System.out.println();
+        System.out.println("----Method setNames()----");
         String[] names = {"Magnus Sven", "Mila Magnus", "Peter Axelsson", "Erik Strom"};
+        System.out.println("String array is : ");
         setNames(names);
+
+        System.out.println(" ");
+        System.out.println("---Method FindAll()---");
         String[] myArr = findAll(names);
         System.out.println(Arrays.toString(myArr));
-        System.out.println("Size of array " + getSize());
-        System.out.println(" Full name is : " + find("Erik Strom"));
-        System.out.println(" Add new name to existing array ");
-        add("Shu D");
-        //find("Erik Strom");
 
+        System.out.println(" ");
+        System.out.println("Array after adding elements: ");
+        System.out.println("Size of array is : " + getSize());
+
+        System.out.println(" ");
+        System.out.println("---Method Find()--- ");
+        System.out.println(" Full name is : " + find("Erik Stm"));
+
+        System.out.println(" ");
+        System.out.println("---Method add()---");
+        System.out.println(" Add new name to existing array ");
+
+        System.out.println(" ");
+        add("Shu D");
+        //GET SIZE METHOD IS NOT WORKING CORRECTLY, ARRAY IS NOT DISPLAYING CORRECTLY
+        System.out.println(" ");
+        System.out.println("Size of array after adding new element : " + getSize());
+
+        System.out.println(" ");
+        System.out.println(" ---Method Find()---");
         System.out.println(" Name found = " + find("Magnus Sven"));
 
-        update("Magnus Sven", "Angalina Kav");
+        System.out.println(" ");
+        System.out.println("---Method  Update()---");
+        update("Magnus Sven", "Lara Kav");
 
+        System.out.println(" ");
+        System.out.println("After updating the array with new name : ");
+        System.out.println(Arrays.toString(findAll(names)));
+
+        System.out.println(" ");
+        //System.out.println(Arrays.toString(findByFirstName("Peter ": ; String space ; ));
         // clear();
         //System.out.println("The size of array after emptying it "+getSize());
 
 
     }
 
-    public static String[] update(final String original, final String updatedName) {
+    public static void update(final String original, final String updatedName) {
         for (int n = 0; n < names.length; n++) {
             if (original.equalsIgnoreCase(Arrays.toString(names))) ;
             {
@@ -44,8 +74,6 @@ public class NameRepository {
 
         }
 
-
-        return names;
     }
 
     public static int getSize() {
@@ -116,6 +144,20 @@ public class NameRepository {
         }
         return lastName;
     }
+
+    public static boolean remove(final String fullName) {
+        for (String key : names
+        ) {
+            if (key.equalsIgnoreCase(fullName)) {
+
+
+            }
+
+        }
+        return true;
+    }
+
+
 
 
 }
